@@ -1,0 +1,54 @@
+{% extends 'post/base.html' %}
+{% block content %}
+    {% load my_tags %}
+    {% block chart %}
+        <!-- Удалить информацию, оставив этот блок пустым -->
+    {% endblock %}
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <h2 class="head_text" style="text-align: center;">Посты</h2>
+
+        {% if user.is_authenticated and user.is_author %}
+            <p>
+                <a class="gradient-button" href="{% url 'post:post-create' %}" role="button">Добавить
+                    пост</a>
+            </p>
+        {% endif %}
+        {% for object in object_list %}
+            <div class="col-lg-4">
+                {% if user.is_authenticated and subscription.is_paid or object.is_free or user == object.author%}
+
+                    {% if object.preview %}
+                        <img src="{{ object.preview|media_filter }}" class="bd-placeholder-img rounded-circle"
+                             width="140" height="140" alt="Avatar">
+                    {% else %}
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                             preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#777"/>
+                            <text x="50%" y="50%" fill="#fff" dy=".3em" text-anchor="middle">Превью</text>
+                        </svg>
+                    {% endif %}
+
+                    <h2>{{ object.title }}</h2>
+                    <p>{{ object.description|truncatechars:100 }}</p>
+
+                    <p><a class="btn btn-outline-success" href="{% url 'post:post-detail' object.pk %}">Подробнее
+                        &raquo;</a></p>
+                    {% if user == object.author %}
+                        <p><a class="btn btn-outline-success" href="{% url 'post:post-update' object.pk %}">Редактировать
+                            &raquo;</a></p>
+                        <p><a class="btn btn-outline-danger" href="{% url 'post:post-delete' object.pk %}">Удалить </a>
+                        </p>
+                    {% endif %}
+                {% endif %}
+            </div><!-- /.col-lg-4 -->
+        {% endfor %}
+    </div><!-- /.row -->
+
+{% endblock %}
+
+{% block chart2 %}
+    <!-- Удалить информацию, оставив этот блок пустым -->
+{% endblock %}

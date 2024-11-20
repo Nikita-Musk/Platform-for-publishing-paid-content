@@ -1,0 +1,39 @@
+{% extends 'post/base.html' %}
+{% load crispy_forms_tags %}
+{% block chart %}
+    <!-- Удалить график, оставив этот блок пустым -->
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="offset-md-3 col-md-6">
+            <form class="row mx-auto" method="post" enctype="multipart/form-data">
+                <div class="col-6 mx-auto">
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Войти
+                        </button>
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block chart2 %}
+    <!-- Удалить график, оставив этот блок пустым -->
+{% endblock %}
