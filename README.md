@@ -19,21 +19,31 @@
 
 1. Клонировать репозиторий на свой компьютер.
 2. Установить зависимости с помощью команды:
+```bash
    poetry install
+```
 3. Применить миграции базы данных:
+```bash
    python manage.py makemigrations python manage.py migrate
+```
 4. Создать файл `.env` и внести данные, используя образец `.env.sample`.
 
 ## Запуск проекта
 
 Для локальной разработки используйте команду:
-python manage.py runserver
+```bash
+  python manage.py runserver
+```
 Для загрузки данных из фикстур:
 
 - Для добавления пользователей:
+```bash
   python manage.py loaddata fixtures/users.json
+```
 - Для добавления постов:
+```bash
   python manage.py loaddata fixtures/post.json
+```
 
 **Примечание:** Для отправки кода подтверждения SMS, номер пользователя должен быть подтвержден в Twilio, и должна быть
 оплачена рассылка SMS. Для тестирования функции отправки используется имитация через `print()`.
@@ -43,36 +53,40 @@ python manage.py runserver
 ### Шаги для запуска Docker:
 
 1. Собрать и запустить контейнеры:
-
-docker-compose up -d --build
-
+```bash
+  docker-compose up -d --build
+```
 2. Для загрузки фикстур в контейнер:
 
 - Загрузить пользователей:
-  ```
+```bash
   docker-compose exec app python manage.py loaddata fixtures/users.json
-  ```
+```
 - Загрузить посты:
-  ```
+```bash
   docker-compose exec app python manage.py loaddata fixtures/post.json
-  ```
+```
 
 3. Для просмотра логов (имитация функции `print()`):
-
-docker-compose logs web
-
+```bash
+  docker-compose logs web
+```
 ### Остановка контейнеров:
 
 - Для остановки и удаления контейнеров:
+```bash
   docker-compose down
+```
 - Для остановки контейнеров без удаления:
+```bash
   docker-compose stop
+```
 
 ### Запуск контейнеров:
 
 Для повторного запуска контейнеров:
 ```bash
-docker-compose up -d
+  docker-compose up -d
 ```
 ## Технологии
 
