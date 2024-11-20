@@ -1,0 +1,30 @@
+{% extends 'post/base.html' %}
+{% block chart %}
+    <!-- Удалить информацию, оставив этот блок пустым -->
+{% endblock %}
+
+{% block content %}
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">Автор: {{ object.author.first_name }} {{ object.author.last_name}}</p>
+                            <p class="card-text">Тема: {{ object.title }}</p>
+                            <p class="card-text">{{ object.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-outline-success btn-lg mx-3" href="{% url 'post:post-list' %}"
+                                       role="button">Назад &raquo;</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block chart2 %}
+    <!-- Удалить информацию, оставив этот блок пустым -->
+{% endblock %}

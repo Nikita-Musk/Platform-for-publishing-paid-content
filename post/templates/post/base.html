@@ -1,0 +1,221 @@
+{% load static %}
+{% load my_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>PeakyWrites</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <style>
+        .navbar-nav {
+            flex-direction: row; /* Устанавливаем направление flex */
+            justify-content: center; /* Центрируем элементы */
+            width: 100%; /* Занимаем всю ширину */
+        }
+    </style>
+    <style>
+        .gradient-button {
+            background: linear-gradient(to right, gray, #28a745);
+            color: white; /* Цвет текста */
+            padding: 10px 20px; /* Внутренние отступы */
+            border: none; /* Убираем границу */
+            border-radius: 5px; /* Закругленные углы */
+            cursor: pointer; /* Указатель при наведении */
+            transition: transform 0.3s; /* Плавный переход для эффекта нажатия */
+        }
+
+        .gradient-button:hover {
+            transform: scale(1.05); /* Увеличение кнопки при наведении */
+        }
+    </style>
+    <style>
+        .custom-brand {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+    <style>
+        .head_text {
+            font-family: 'Roboto', sans-serif; /* Используем шрифт Roboto */
+            background-color: #f4f4f4; /* Цвет фона */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .head_text {
+            text-align: center; /* Центрирование текста */
+            font-size: 3em; /* Размер шрифта */
+            color: #ffffff; /* Цвет текста */
+            margin-bottom: 20px; /* Отступ снизу */
+            padding: 20px; /* Отступ внутри заголовка */
+            background: linear-gradient(to right, gray, #28a745);
+            border-radius: 10px; /* Закругленные углы */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Тень текста */
+            display: inline-block; /* Для центрирования границы */
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+</head>
+<body>
+
+{% include 'post/includes/inc_menu.html' %}
+
+<main>
+    {% block chart %}
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777"/>
+                    </svg>
+
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Сообщество талантов, где идеи становятся искусством</h1>
+                            <p>Наше сообщество объединяет талантливых писателей, художников и создателей, которые
+                                вдохновляют друг друга и делятся своими уникальными идеями. Здесь вы найдете
+                                разнообразие стилей и направлений, которые помогут вам открыть новые горизонты
+                                творчества.</p>
+                            <p><a class="btn btn-lg btn-success" href="{% url 'users:authors' %}">Наши авторы</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777"/>
+                    </svg>
+
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Откройте для себя мир увлекательных постов!</h1>
+                            <p>В нашем сообществе каждый найдет что-то по своему вкусу! Мы предлагаем разнообразный
+                                контент, который вдохновляет и развлекает. Наслаждайтесь бесплатными материалами, а для
+                                полного доступа к эксклюзивным постам и уникальным материалам оформите подписку.
+                                Присоединяйтесь к нам и погружайтесь в мир знаний и творчества!</p>
+                            <p><a class="btn btn-lg btn-success" href="{% url 'post:post-list' %}">Посты</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777"/>
+                    </svg>
+
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>Стань частью нашего творческого сообщества!</h1>
+                            <p>Мы рады приветствовать всех пользователей и авторов! Присоединяйтесь к нашему сообществу,
+                                где вы сможете делиться своими идеями, находить единомышленников и получать вдохновение.
+                                Вместе мы создаем уникальный контент и поддерживаем друг друга на пути к творческому
+                                росту. Не упустите возможность стать частью чего-то большего — ждем вас!</p>
+                            <p><a class="btn btn-lg btn-success" href="{% url 'users:register' %}">Стать частью
+                                семьи</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+            <div style="text-align: center;">
+                <h2 class="head_text">Наши последшие посты</h2>
+            </div>
+        {% endblock %}
+
+    <div class="container marketing">
+        <br>
+        {% block content %}
+        {% endblock %}
+
+        <!-- START THE FEATURETTES -->
+        {% block chart2 %}
+            {% for object in object_list %}
+                <hr class="featurette-divider">
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading">{{ object.title }}</h2>
+                        <p class="lead">{{ object.description }}</p>
+                    </div>
+                    <div class="col-md-5">
+                        {% if object.preview %}
+                            <img src="{{ object.preview|media_filter }}"
+                                 class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                 width="500" height="500" alt="Preview">
+                        {% else %}
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                 width="500"
+                                 height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                                 aria-label="Placeholder: 500x500"
+                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#eee"/>
+                                <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+                            </svg>
+                        {% endif %}
+
+                    </div>
+                    {% if object.is_free %}
+                        <p><a class="btn btn-outline-success" href="{% url 'post:post-detail' object.pk %}">Подробнее
+                            &raquo;</a></p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <hr class="featurette-divider">
+            </div><!-- /.container -->
+
+
+            <!-- FOOTER -->
+            <footer class="container">
+                <p class="float-end"><a href="#">Back to top</a></p>
+                <p>&copy; 2024–{% now 'Y' %} &middot; Nikita Musk &middot; Все права защищены
+            </footer>
+        {% endblock %}
+</main>
+
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+</html>

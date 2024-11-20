@@ -1,0 +1,37 @@
+{% extends 'post/base.html' %}
+{% load crispy_forms_tags %}
+{% block chart %}
+    <!-- Удалить график, оставив этот блок пустым -->
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="offset-md-3 col-md-6">
+            <form class="row mx-auto" method="post" enctype="multipart/form-data">
+                <div class="col-6 mx-auto">
+
+                    <div class="card">
+                                 <div class="card-header">
+                    <h2 class="card-title">
+                        Профиль
+                    </h2>
+                </div>
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Сохранить
+                        </button>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block chart2 %}
+    <!-- Удалить график, оставив этот блок пустым -->
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'post/base.html' %}
+{% block content %}
+
+    {% block chart %}
+        <!-- Удалить информацию, оставив этот блок пустым -->
+    {% endblock %}
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+    <div class="row">
+        <h2 class="head_text" style="text-align: center;">Доступные подписки</h2>
+        {% for value, display in subscription_choices %}
+            <div class="col-lg-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="head_text" style="text-align: center;">Подписка на {{ display }}</h2>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="type_of_sub" value="{{ value }}">
+                            <button type="submit" class="btn btn btn-outline-success">Купить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block chart2 %}
+    <!-- Удалить информацию, оставив этот блок пустым -->
+{% endblock %}

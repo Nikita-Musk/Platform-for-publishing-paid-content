@@ -1,0 +1,60 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand text-white font-weight-bold display-4 custom-brand">PeakyWrites</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'post:index' %}">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'users:authors' %}">Авторы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'post:post-list' %}">Публикации</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'users:profile' %}">Профиль</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'post:subscription' %}">Купить
+                            подписку</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        {% if subscription and subscription.is_paid %}
+                            <li class="nav-item">
+                                <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Подписан</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Не подписан</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                <div class="nav-item text-nowrap">
+
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'users:logout' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-success" type="submit"><span style="color: white;">Выйти</span>
+                            </button>
+                        </form>
+                    {% else %}
+                        <form method="get" action="{% url 'users:login' %}">
+                            <a class="btn btn-success" href="{% url 'users:login' %}"><span
+                                    style="color: white;">Войти</span></a>
+                            <a class="btn btn-success" href="{% url 'users:register' %}"><span style="color: white;">Регистрация</span></a>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
